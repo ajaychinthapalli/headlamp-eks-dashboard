@@ -64,6 +64,16 @@ Open `http://localhost:8080` and paste in the token from step 3.
 - Do not expose the `headlamp` Service via a public LoadBalancer. Keep access behind `kubectl port-forward`, a VPN, or an internal ALB/Ingress with auth in front.
 - For teams (more than 1–2 users), configure Headlamp's OIDC login instead of distributing bearer tokens — this lets you wire it to IAM Identity Center, Okta, or another existing IdP.
 
+## When should you use the EKS dashboard?
+
+The EKS dashboard is ideal for:
+
+- Small teams managing early-stage EKS clusters.
+- Developers needing visual insight into workloads.
+- QA or support teams with limited command-line experience.
+
+Use it when you want a fast way to inspect pods, services, deployments, and logs without needing to memorize `kubectl` commands for every task. It is especially useful for onboarding, troubleshooting, and operational visibility in smaller or less-experienced environments.
+
 ## Alternative: legacy Kubernetes Dashboard (not recommended)
 
 If you specifically need the old `kubernetes-dashboard` chart, the Helm repo is gone but the last published chart package can still be pulled from GitHub releases:
