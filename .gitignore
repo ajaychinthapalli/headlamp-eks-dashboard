@@ -1,0 +1,20 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Temporary files
+*.log
+*.swp
+*.tmp
+*~
+
+# Local environment files
+.env
+.env.*
+
+# Local Kubernetes and token artifacts
+kubeconfig*
+*.kubeconfig
+*-token.txt
