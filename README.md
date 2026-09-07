@@ -30,33 +30,12 @@ kubectl get pods -n kube-system -l app.kubernetes.io/name=headlamp
 
 ## 2. Create an admin Service Account
 
-Save as `headlamp-admin.yaml`:
-
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  name: headlamp-admin
-  namespace: kube-system
----
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: headlamp-admin
-roleRef:
-  apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: cluster-admin
-subjects:
-- kind: ServiceAccount
-  name: headlamp-admin
-  namespace: kube-system
-```
+Use the manifest included in this repository at `manifests/headlamp-admin.yaml`.
 
 Apply:
 
 ```bash
-kubectl apply -f headlamp-admin.yaml
+kubectl apply -f manifests/headlamp-admin.yaml
 ```
 
 > ⚠️ `cluster-admin` grants full cluster control. Use it to get started, but scope it down for any shared or long-lived environment (see [Hardening](#5-hardening-before-real-use)).
@@ -77,7 +56,7 @@ kubectl port-forward -n kube-system svc/headlamp 8080:80
 
 Open `http://localhost:8080` and paste in the token from step 3.
 
-![img.png](img.png)
+![Headlamp login screen](assets/headlamp-login.png)
 
 ## 5. Hardening before real use
 
